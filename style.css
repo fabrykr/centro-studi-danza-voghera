@@ -320,11 +320,6 @@ hr {
         padding: 15px;
     }
 
-    /* Nascondiamo le due icone a destra per semplicità e spazio */
-    .header-immagini-destra {
-        display: none;
-    }
-
     /* Riduciamo un po' i margini e il padding per adattarli allo spazio ridotto */
     header h1 {
         margin-bottom: 10px;
