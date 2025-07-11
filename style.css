@@ -306,14 +306,69 @@ hr {
     transform: scale(1.2);
 }
 
-/* --- Media Query per Dispositivi Mobili --- */
+/* =================================
+   MEDIA QUERY PER DISPOSITIVI MOBILI
+   ================================= */
 @media (max-width: 768px) {
-    .contatti-container {
+
+    /* --- Header --- */
+    header {
+        /* Trasformiamo il layout a griglia in una colonna flessibile */
+        display: flex;
         flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    /* Nascondiamo le due icone a destra per semplicità e spazio */
+    .header-immagini-destra {
+        display: none;
+    }
+
+    /* Riduciamo un po' i margini e il padding per adattarli allo spazio ridotto */
+    header h1 {
+        margin-bottom: 10px;
+        font-size: 1.5em; /* Riduciamo la dimensione del titolo */
+    }
+    nav a {
+        margin: 0 2px;
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+
+
+    /* --- Contenuto Principale --- */
+    section {
+        padding: 30px 15px; /* Meno padding laterale su mobile */
+        scroll-margin-top: 100px; /* Riduciamo l'offset per l'header più piccolo */
+    }
+
+
+    /* --- Sezione Insegnanti --- */
+    .insegnante {
+        flex-direction: column; /* Impila l'immagine sopra al testo */
+        text-align: center;     /* Centra il testo dell'insegnante */
+    }
+
+
+    /* --- Foto Sala (Sezione Scuola) --- */
+    .sala-immagini {
+        grid-template-columns: 1fr; /* Le foto andranno una sotto l'altra */
+    }
+
+    .sala-immagini img {
+        height: 200px; /* Riduciamo l'altezza su mobile */
+    }
+
+
+    /* --- Sezione Contatti --- */
+    .contatti-container {
+        flex-direction: column; /* Impila le colonne verticalmente */
         gap: 30px;
     }
+
     .info-contatto {
-        text-align: center;
+        text-align: center; /* Centra il testo quando è impilato */
     }
 }
 
