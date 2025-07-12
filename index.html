@@ -167,14 +167,17 @@
     // Seleziona gli elementi necessari dal DOM
     const modal = document.getElementById("modal-galleria");
     const modalImg = document.getElementById("modal-img");
-    const galleriaImgs = document.querySelectorAll(".grid-galleria img, #logo, .insegnante img, .header-icona");
+    
+    // MODIFICA: Aggiunti i selettori per logo, icone header e foto insegnanti
+    const immaginiCliccabili = document.querySelectorAll(".grid-galleria img, #logo, .insegnante img, .header-icona");
+    
     const closeBtn = document.querySelector(".close-btn");
 
-    // Itera su ogni immagine della galleria e aggiungi un evento click
-    galleriaImgs.forEach(img => {
+    // Itera su ogni immagine cliccabile e aggiungi l'evento
+    immaginiCliccabili.forEach(img => {
         img.onclick = function() {
-            modal.style.display = "block"; // Mostra la finestra modale
-            modalImg.src = this.src;       // Imposta l'immagine grande con quella cliccata
+            modal.style.display = "block";
+            modalImg.src = this.src;
         }
     });
 
@@ -183,7 +186,7 @@
         modal.style.display = "none";
     }
 
-    // Quando l'utente clicca fuori dall'immagine (sullo sfondo nero), chiudi la modale
+    // Quando l'utente clicca fuori dall'immagine, chiudi la modale
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
