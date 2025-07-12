@@ -19,7 +19,7 @@
    IMPOSTAZIONI GENERALI E SFONDO
    ================================= */
 
-/* Aggiunta best practice per il box model */
+/* Best practice per il box model */
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -43,7 +43,6 @@ body::before {
     width: 100%;
     height: 100%;
     z-index: -1;
-    /* Nota: Questo URL potrebbe essere instabile. Si consiglia di usare un'immagine locale. */
     background-image: url('https://scontent-fco2-1.xx.fbcdn.net/v/t51.75761-15/465813723_18160041298321139_705460336281806925_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=xLDpgMOnYIUQ7kNvwHJKFE8&_nc_oc=Adn_ztTTAXXV5W32mbJ7iD-0cGulm-tE7NfL30eIW61zZViAoGxC9rq7aTuMcE3mE_M&_nc_zt=23&_nc_ht=scontent-fco2-1.xx&_nc_gid=W4Sl_CTB2enS9cvs7SosGw&oh=00_AfRzwqVuXN13Y-bPonsWqYsSdYVPB9SaqDh9AM8rcjOtlQ&oe=6875AED8');
     background-size: cover;
     background-position: center;
@@ -59,10 +58,6 @@ body::before {
    HEADER E NAVIGAZIONE
    ================================= */
 
-/* =================================
-   HEADER E NAVIGAZIONE
-   ================================= */
-
 header {
     background-color: var(--colore-header-footer);
     color: var(--colore-testo-bianco);
@@ -71,14 +66,12 @@ header {
     top: 0;
     z-index: 100;
     padding: 10px 20px;
-    box-sizing: border-box;
-
     /* --- LAYOUT FLEXBOX (versione robusta) --- */
     display: flex;
     align-items: center;
 }
 
-/* --- Colonna Sinistra --- */
+/* --- Elementi Header --- */
 #logo {
     width: 80px;
     height: 80px;
@@ -86,18 +79,34 @@ header {
     border: 4px solid var(--colore-accento-blu);
     object-fit: cover;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- Colonna Centrale --- */
 .header-content {
     text-align: center;
-    /* La magia è qui: i margini automatici forzano la centratura perfetta */
-    margin: 0 auto;
+    margin: 0 auto; /* Forza la centratura perfetta */
+}
+
+.header-immagini-destra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-icona {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 3px solid var(--colore-accento-blu);
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 header h1 {
-    font-family: var(--font-principale); /* Assicura l'uso di Montserrat */
-    font-weight: 700; /* 700 è il grassetto per Montserrat */
+    font-family: var(--font-principale);
+    font-weight: 700;
     margin: 0 0 10px 0;
 }
 
@@ -111,6 +120,7 @@ nav a {
     transition: all 0.2s ease-in-out;
 }
 
+/* --- Effetti Interattivi Header --- */
 nav a:hover,
 nav a:focus {
     background-color: rgba(255, 255, 255, 0.2);
@@ -122,20 +132,13 @@ nav a:active {
     transform: translateY(0);
 }
 
-/* --- Colonna Destra --- */
-.header-immagini-destra {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+#logo:hover,
+.header-icona:hover,
+.insegnante img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-.header-icona {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 3px solid var(--colore-accento-blu);
-    object-fit: cover;
-}
 
 /* =================================
    CONTENUTO PRINCIPALE E SEZIONI
@@ -188,6 +191,8 @@ hr {
     object-fit: cover;
     border: 4px solid var(--colore-accento-blu);
     flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .insegnante-info h3 {
@@ -313,57 +318,51 @@ hr {
 
     /* --- Header --- */
     header {
-        /* Trasformiamo il layout a griglia in una colonna flessibile */
-        display: flex;
         flex-direction: column;
         gap: 15px;
         padding: 15px;
     }
 
-    /* Riduciamo un po' i margini e il padding per adattarli allo spazio ridotto */
     header h1 {
         margin-bottom: 10px;
-        font-size: 1.5em; /* Riduciamo la dimensione del titolo */
+        font-size: 1.5em;
     }
+
     nav a {
         margin: 0 2px;
         padding: 6px 10px;
         font-size: 0.9em;
     }
 
-
     /* --- Contenuto Principale --- */
     section {
-        padding: 30px 15px; /* Meno padding laterale su mobile */
-        scroll-margin-top: 100px; /* Riduciamo l'offset per l'header più piccolo */
+        padding: 30px 15px;
+        scroll-margin-top: 100px;
     }
-
 
     /* --- Sezione Insegnanti --- */
     .insegnante {
-        flex-direction: column; /* Impila l'immagine sopra al testo */
-        text-align: center;     /* Centra il testo dell'insegnante */
+        flex-direction: column;
+        text-align: center;
     }
-
 
     /* --- Foto Sala (Sezione Scuola) --- */
     .sala-immagini {
-        grid-template-columns: 1fr; /* Le foto andranno una sotto l'altra */
+        grid-template-columns: 1fr;
     }
 
     .sala-immagini img {
-        height: 200px; /* Riduciamo l'altezza su mobile */
+        height: 200px;
     }
-
 
     /* --- Sezione Contatti --- */
     .contatti-container {
-        flex-direction: column; /* Impila le colonne verticalmente */
+        flex-direction: column;
         gap: 30px;
     }
 
     .info-contatto {
-        text-align: center; /* Centra il testo quando è impilato */
+        text-align: center;
     }
 }
 
